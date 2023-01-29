@@ -15,6 +15,8 @@ namespace _3курс2семестр
         public Form5()
         {
             InitializeComponent();
+            string[] stroki = { "1 2 3 4 5 6 7 8 9", "2 2 2 2 2 2", "  0  3  2  9  0", "0 0   0    0 0", "3 3 3 3 3", "3 3 y 3 3" };
+            listBox1.Items.AddRange(stroki);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,6 +42,11 @@ namespace _3курс2семестр
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = listBox1.SelectedItem.ToString();
         }
     }
 }
