@@ -16,18 +16,39 @@ namespace A_S_Doin
         {
             InitializeComponent();
         }
-
+        public void math(double f)
+        {
+            double Verh, p, y, z, x;
+            x = Convert.ToDouble(textBox1.Text);
+            y = Convert.ToDouble(textBox2.Text);
+            z = Convert.ToDouble(textBox3.Text);
+            Verh = Math.Abs(Math.Min(f, y) - Math.Max(y, z));
+            p = Verh / 2;
+            textBox5.Text = f.ToString();
+            textBox4.Text = p.ToString();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                double Verh, p, y, z, x;
-                x = Convert.ToDouble(textBox1.Text);
-                y = Convert.ToDouble(textBox2.Text);
-                z = Convert.ToDouble(textBox3.Text);
-                Verh = Math.Abs(Math.Min((x * x), y) - Math.Max(y, z));
-                p = Verh / 2;
-                textBox4.Text = p.ToString();
+                if(radioButton1.Checked == true)
+                {
+                    double x;
+                    x = Convert.ToDouble(textBox1.Text);
+                    math(Math.Pow(x, x));
+                }
+                if (radioButton2.Checked == true)
+                {
+                    double x;
+                    x = Convert.ToDouble(textBox1.Text);
+                    math(Math.Pow(Math.E, x));
+                }
+                if (radioButton3.Checked == true)
+                {
+                    double x;
+                    x = Convert.ToDouble(textBox1.Text);
+                    math(Math.Sinh(x));
+                }
             }
             catch (Exception ex)
             {
