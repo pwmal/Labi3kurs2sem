@@ -77,6 +77,7 @@ namespace _3курс2семестр
             textBox1.Text = s;
         }
 
+        string sfile;
         private void button2_Click(object sender, EventArgs e)
         {
             String path = textBox4.Text;
@@ -84,8 +85,8 @@ namespace _3курс2семестр
             {
                 FileStream f = new FileStream(path, FileMode.Open, FileAccess.Read);
                 StreamReader r = new StreamReader(f);
-                string s = r.ReadToEnd();
-                textBox1.Text = s;
+                sfile = r.ReadToEnd();
+                textBox1.Text = sfile;
                 r.Close();
                 f.Close();
             }
@@ -94,7 +95,27 @@ namespace _3курс2семестр
                 MessageBox.Show("Путь к файлу введён неправильно");
             }
         }
-
+        public void file1(string a, int index, int m)
+        {
+            string path = textBox6.Text;
+            using (FileStream file = new FileStream(path, FileMode.Append))
+            {
+                using (StreamWriter w = new StreamWriter(file))
+                {
+                    if (sfile == textBox1.Text)
+                    {
+                        if (a == "Максимальное")
+                        {
+                            w.Write($"Максимальное число массива находится в {index + 1} позиции и равно " + Convert.ToString(m));
+                        }
+                        else if(a == "Минимальное")
+                        {
+                            w.Write(path, $"Минимальное число массива находится в {index + 1} позиции и равно " + Convert.ToString(m));
+                        }
+                    }
+                }
+            }
+        }
         private void button4_Click(object sender, EventArgs e)
         {
             try
@@ -113,6 +134,7 @@ namespace _3курс2семестр
                             index = i;
                         }
                     }
+                    file1("Максимальное", index, max);
                     textBox3.Text = $"Максимальное число массива находится в {index + 1} позиции и равно " + Convert.ToString(max);
                 }
                 else
@@ -129,6 +151,7 @@ namespace _3курс2семестр
                             index = i;
                         }
                     }
+                    file1("Минимальное", index, min);
                     textBox3.Text = $"Минимальное число массива находится в {index + 1} позиции и равно " + Convert.ToString(min);
                 }
             }
@@ -158,6 +181,7 @@ namespace _3курс2семестр
                             break;
                         }
                     }
+
                     if (number == 0)
                         textBox3.Text = "В данном массиве такого числа нет, попробуйте еще раз!";
 
