@@ -35,7 +35,7 @@ namespace A_S_Doin
                 {
                     double x;
                     x = Convert.ToDouble(textBox1.Text);
-                    math(Math.Pow(x, x));
+                    math(Math.Pow(x, 2));
                 }
                 if (radioButton2.Checked == true)
                 {
