@@ -55,50 +55,71 @@ namespace _3курс2семестр
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Random r = new Random();
-            int[] nums = new int[10];
-            for (int i = 0; i < nums.Length; i++)
+            try
             {
-                nums[i] = r.Next(0,10);
+                Random r = new Random();
+                int[] nums = new int[10];
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    nums[i] = r.Next(0, 10);
+                }
+                String s = String.Join(";", nums);
+                textBox1.Text = s;
             }
-            String s = String.Join(";", nums);
-            textBox1.Text = s;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String path = textBox4.Text;
-            if(File.Exists(path))
+            try
             {
-                FileStream f = new FileStream(path, FileMode.Open, FileAccess.Read);
-                StreamReader r = new StreamReader(f);
-                string s = r.ReadToEnd();
-                textBox1.Text = s;
-                r.Close();
-                f.Close();
-            }    
-            else
+                String path = textBox4.Text;
+                if (File.Exists(path))
+                {
+                    FileStream f = new FileStream(path, FileMode.Open, FileAccess.Read);
+                    StreamReader r = new StreamReader(f);
+                    string s = r.ReadToEnd();
+                    textBox1.Text = s;
+                    r.Close();
+                    f.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Путь к файлу введён неправильно");
+                }
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Путь к файлу введён неправильно");
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var stopwatch = Stopwatch.StartNew();
-            String[] s2 = new String[10];
-            s2 = textBox1.Text.Split(new char[] { ';' });
-            int[] nums = new int[10];
-            for (int i = 0; i < s2.Length; i++)
+            try
             {
-                nums[i] = Convert.ToInt32(s2[i]);
+                var stopwatch = Stopwatch.StartNew();
+                String[] s2 = new String[10];
+                s2 = textBox1.Text.Split(new char[] { ';' });
+                int[] nums = new int[10];
+                for (int i = 0; i < s2.Length; i++)
+                {
+                    nums[i] = Convert.ToInt32(s2[i]);
+                }
+
+                CocktailSort(nums);
+                String s = String.Join(";", nums);
+                textBox2.Text = s;
+                stopwatch.Stop();
+                textBox3.Text = Convert.ToString(stopwatch.ElapsedTicks);
             }
-            
-            CocktailSort(nums);
-            String s = String.Join(";", nums);
-            textBox2.Text = s;
-            stopwatch.Stop();
-            textBox3.Text = Convert.ToString(stopwatch.ElapsedTicks);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)

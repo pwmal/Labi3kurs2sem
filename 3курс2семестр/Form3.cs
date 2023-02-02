@@ -17,7 +17,7 @@ namespace _3курс2семестр
             InitializeComponent();
         }
 
-        int Factorial(int n)
+        ulong Factorial(ulong n)
         {
             if (n == 1) return 1;
 
@@ -28,7 +28,7 @@ namespace _3курс2семестр
         {
             try
             {
-                textBox2.Text = Convert.ToString(Factorial(Convert.ToInt32(textBox1.Text)));
+                textBox2.Text = Convert.ToString(Factorial(Convert.ToUInt64(textBox1.Text)));
             }
             catch (Exception ex)
             {

@@ -67,32 +67,46 @@ namespace _3курс2семестр
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Random r = new Random();
-            int[] nums = new int[10];
-            for (int i = 0; i < nums.Length; i++)
+            try
             {
-                nums[i] = r.Next(0, 101);
+                Random r = new Random();
+                int[] nums = new int[10];
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    nums[i] = r.Next(0, 101);
+                }
+                String s = String.Join(";", nums);
+                textBox1.Text = s;
             }
-            String s = String.Join(";", nums);
-            textBox1.Text = s;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         string sfile;
         private void button2_Click(object sender, EventArgs e)
         {
-            String path = textBox4.Text;
-            if (File.Exists(path))
+            try
             {
-                FileStream f = new FileStream(path, FileMode.Open, FileAccess.Read);
-                StreamReader r = new StreamReader(f);
-                sfile = r.ReadToEnd();
-                textBox1.Text = sfile;
-                r.Close();
-                f.Close();
+                String path = textBox4.Text;
+                if (File.Exists(path))
+                {
+                    FileStream f = new FileStream(path, FileMode.Open, FileAccess.Read);
+                    StreamReader r = new StreamReader(f);
+                    sfile = r.ReadToEnd();
+                    textBox1.Text = sfile;
+                    r.Close();
+                    f.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Путь к файлу введён неправильно");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Путь к файлу введён неправильно");
+                MessageBox.Show(ex.Message);
             }
         }
         public void file1(string a, int index, int m)
@@ -189,67 +203,90 @@ namespace _3курс2семестр
 
         private void button5_Click(object sender, EventArgs e)
         {
-
-            if ((sender as Button).Text == "Поиск")
+            try
             {
-                string[] s2 = new string[10];
-                s2 = textBox1.Text.Split(new char[] { ';' });
-                int index = -1;
-                int number = 0;
-                for (int i = 0; i < s2.Length; i++)
-                {
-                    if (s2[i] == textBox2.Text && textBox2.Text != "")
-                    {
-                        number = Convert.ToInt32(s2[i]);
-                        index = i;
-                        textBox3.Text = $"Выбранное Вами число массива находится в {index + 1} позиции";
-                        break;
-                    }
-                }
-                file2(index, number);
-                if (index == -1)
-                    textBox3.Text = "В данном массиве такого числа нет, попробуйте еще раз!";
-
-            }
-            else
-            {
-                if (textBox1.Text != "" && textBox2.Text != "")
+                if ((sender as Button).Text == "Поиск")
                 {
                     string[] s2 = new string[10];
                     s2 = textBox1.Text.Split(new char[] { ';' });
-                    int[] nums = new int[10];
+                    int index = -1;
+                    int number = 0;
                     for (int i = 0; i < s2.Length; i++)
                     {
-                        if (textBox1.Text != "")
-                            nums[i] = Convert.ToInt32(s2[i]);
+                        if (s2[i] == textBox2.Text && textBox2.Text != "")
+                        {
+                            number = Convert.ToInt32(s2[i]);
+                            index = i;
+                            textBox3.Text = $"Выбранное Вами число массива находится в {index + 1} позиции";
+                            break;
+                        }
                     }
-                    CocktailSort(nums);
-                    String s = String.Join(";", nums);
-                    textBox5.Text = s;
-                    int l = 0, r = nums.Length;
-                    int number = Convert.ToInt32(textBox2.Text);
-                    int result = BinarySearch(nums, number, l, r);
-                    file2(result, number);
-                    if (result == -1)
+                    file2(index, number);
+                    if (index == -1)
                         textBox3.Text = "В данном массиве такого числа нет, попробуйте еще раз!";
-                    else
-                        textBox3.Text = $"Выбранное Вами число массива находится в {result + 1} позиции";
+
                 }
                 else
                 {
-                    int result = -1;
-                    int number = -1;
-                    file2(result, number);
-                    if (result == -1)
-                        textBox3.Text = "В данном массиве такого числа нет, попробуйте еще раз!";
+                    if (textBox1.Text != "" && textBox2.Text != "")
+                    {
+                        string[] s2 = new string[10];
+                        s2 = textBox1.Text.Split(new char[] { ';' });
+                        int[] nums = new int[10];
+                        for (int i = 0; i < s2.Length; i++)
+                        {
+                            if (textBox1.Text != "")
+                                nums[i] = Convert.ToInt32(s2[i]);
+                        }
+                        CocktailSort(nums);
+                        String s = String.Join(";", nums);
+                        textBox5.Text = s;
+                        int l = 0, r = nums.Length;
+                        int number = Convert.ToInt32(textBox2.Text);
+                        int result = BinarySearch(nums, number, l, r);
+                        file2(result, number);
+                        if (result == -1)
+                            textBox3.Text = "В данном массиве такого числа нет, попробуйте еще раз!";
+                        else
+                            textBox3.Text = $"Выбранное Вами число массива находится в {result + 1} позиции";
+                    }
                     else
-                        textBox3.Text = $"Выбранное Вами число массива находится в {result + 1} позиции";
-                }
-                    
+                    {
+                        int result = -1;
+                        int number = -1;
+                        file2(result, number);
+                        if (result == -1)
+                            textBox3.Text = "В данном массиве такого числа нет, попробуйте еще раз!";
+                        else
+                            textBox3.Text = $"Выбранное Вами число массива находится в {result + 1} позиции";
+                    }
 
-                
+
+
+                }
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OPF = new OpenFileDialog();
+            if (OPF.ShowDialog() == DialogResult.OK)
+            {
+                textBox4.Text = OPF.FileName;
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OPF = new OpenFileDialog();
+            if (OPF.ShowDialog() == DialogResult.OK)
+            {
+                textBox6.Text = OPF.FileName;
+            }
         }
     }
 }
