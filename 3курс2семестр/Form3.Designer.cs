@@ -48,7 +48,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(263, 16);
+            this.label1.Location = new System.Drawing.Point(207, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 1;
@@ -64,10 +64,10 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(210, 32);
+            this.textBox2.Location = new System.Drawing.Point(182, 32);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(155, 33);
+            this.textBox2.Size = new System.Drawing.Size(1516, 903);
             this.textBox2.TabIndex = 3;
             // 
             // label2
@@ -83,7 +83,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 106);
+            this.ClientSize = new System.Drawing.Size(1710, 943);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
