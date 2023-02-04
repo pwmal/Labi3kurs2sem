@@ -102,10 +102,10 @@ namespace _3курс2семестр
 
     public class Dog
     {
-        public string name;
-        public string breed;
-        public int age;
-        public int withers_height;
+        public string name { get; set; }
+        public string breed { get; set; }
+        public int age { get; set; }
+        public int withers_height { get; set; }
 
         public Dog(string Name, string Breed, int Age, int Withers_height)
         {
