@@ -16,7 +16,7 @@ namespace _3курс2семестр
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form6());
+            Application.Run(new Form8());
         }
     }
 }
