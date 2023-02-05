@@ -26,7 +26,18 @@ namespace _3курс2семестр
 
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox5.Text = "Минимальное число, из тех, что вы ввели равно "+Convert.ToString(min(min(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text)), min(Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text))));
+            try
+            {
+                if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "")
+                {
+                    textBox5.Text = "Минимальное число, из тех, что вы ввели равно " + Convert.ToString(min(min(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text)), min(Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text))));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }
