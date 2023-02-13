@@ -21,6 +21,7 @@ namespace _3курс2семестр
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            textBox2.Enabled = true;
             if (comboBox1.SelectedIndex == 4)
             {
                 textBox2.Enabled = false;
