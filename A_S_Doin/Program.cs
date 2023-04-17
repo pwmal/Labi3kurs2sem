@@ -16,7 +16,7 @@ namespace A_S_Doin
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form4());
+            Application.Run(new Form6_3());
         }
     }
 }

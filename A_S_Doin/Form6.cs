@@ -17,15 +17,11 @@ namespace A_S_Doin
         public Form6()
         {
             InitializeComponent();
-            list.Add("Мандарин");
-            list.Add("Груша");
-            list.Add("Ананас");
-            list.Add("Яблоко");
-            list.Add("Банан");
+            list.AddRange(new string[] { "Мандарин", "Груша", "Ананас", "Яблоко", "Банан" });
 
-            for(int i = 0; i < list.Count; i++) 
+            foreach (string i in list)
             {
-                listBox1.Items.Add(list[i]);
+                listBox1.Items.Add(i);
             }
         }
 
@@ -34,7 +30,12 @@ namespace A_S_Doin
             if (textBox1.Text != "" && list.Contains(textBox1.Text) == false)
             {
                 list.Add(textBox1.Text);
-                listBox1.Items.Add(list[list.Count - 1]);
+
+                listBox1.Items.Clear();
+                foreach (string i in list)
+                {
+                    listBox1.Items.Add(i);
+                }
             }
         }
 
@@ -44,7 +45,20 @@ namespace A_S_Doin
             {
                 string s = listBox1.SelectedItem.ToString();
                 list.Remove(s);
-                listBox1.Items.Remove(s);
+
+                listBox1.Items.Clear();
+                foreach (string i in list)
+                {
+                    listBox1.Items.Add(i);
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (textBox3.Text != "")
+            {
+                textBox2.Text = Convert.ToString(list.IndexOf(textBox3.Text)+1);
             }
         }
     }
